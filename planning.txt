@@ -1,0 +1,16 @@
+Step wise breakdown of the app
+
+1. Create a directory for the project and initialize a virtual env.
+    - Name the directory 'calculator'.
+    - Use pipenv to handle pip and venv
+2. Create a server to receive req for a temp root endpoint, using Flask.
+    - Listen at port 5000
+    - root endpoint path = "/"
+3. Create basic html templates.
+    - all html templates in a folder named 'templates'.
+    - all css and js files in folders of same respective names.
+4. Create route handler to serve these templates.
+    - endpoint will be "/app"
+5. Implement form elements to receive data for the expression to be calculated.
+6. Create a route to handle calculation query requests and sends json response back.
+7. Use jinja to insert parsed response in the template.
