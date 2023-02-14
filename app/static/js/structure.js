@@ -1,10 +1,40 @@
 const nameMapping = [
-  ["backspace", "left bracket", "right bracket", "mod", "n"],
-  ["7", "8", "9", "%", "√"],
+  ["←", "(", ")", "mod", "π"],
+  ["7", "8", "9", "/", "√"],
   ["4", "5", "6", "x", "square(x)"],
   ["1", "2", "3", "-", "="],
-  ["0", ".", "%", "+", "="],
+  ["0", ".", "%", "+", "!="],
 ];
+
+const buttonToIdMapping = {
+  "←": "backspace_button",
+  "(": "opening_bracket_button",
+  ")": "closing_bracket_button",
+  mod: "modulo_button",
+  π: "pi_button",
+  "/": "division_button",
+  "√": "sqr_root_button",
+  x: "multiply_button",
+  "square(x)": "square_button",
+  "-": "subtraction_button",
+  "=": "equals_button",
+  "+": "addition_button",
+  "%": "percentage_button",
+  ".": "decimal_button",
+  "!=": "equal_temp_button",
+  0: "zero_button",
+  1: "one_button",
+  2: "two_button",
+  3: "three_button",
+  4: "four_button",
+  5: "five_button",
+  6: "siz_button",
+  7: "seven_button",
+  8: "eight_button",
+  9: "nine_button",
+};
+
+const value = "";
 
 export function assembleStructure() {
   const rootDiv = document.getElementById("root");
@@ -24,7 +54,7 @@ function createCalculator() {
   const subDiv1 = document.createElement("div");
   const displayDiv = document.createElement("div");
   displayDiv.setAttribute("id", "display_container");
-  displayDiv.innerHTML = "<h1>I display here!</h1>";
+  displayDiv.innerHTML = `<h1>${value}</h1>`;
   subDiv1.append(displayDiv);
 
   // create subcontainter 2
@@ -39,7 +69,9 @@ function createCalculator() {
       const subDivEleButton = document.createElement("button");
       const char = nameMapping[r][c];
       subDivEleButton.setAttribute("type", "button");
+      subDivEleButton.setAttribute("id", buttonToIdMapping[char]);
       subDivEleButton.innerText = char;
+      subDivEleButton.value = char;
       subDivEle.append(subDivEleButton);
       subDiv2Ul.append(subDivEle);
     }
