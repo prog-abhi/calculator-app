@@ -11,19 +11,23 @@
     />
   </head>
   <body>
-    <div id="root"></div>
-    <script src="{{url_for('static', filename='js/index.js')}}"></script>
-    <h1>Welcome to the calculator app!</h1>
-    <ul>
-      {% if root %}
-      <li>
-        <a href="{{url_for('app.home')}}">App</a>
-      </li>
-      {% else %}
-      <li>
-        <a href="{{url_for('root.root')}}">Back</a>
-      </li>
-      {% endif %}
-    </ul>
+    <div id="root">
+      <h1>Welcome to the calculator app!</h1>
+      <ul>
+        {% if root %}
+        <li>
+          <a href="{{url_for('app.home')}}">App</a>
+        </li>
+        {% else %}
+        <li>
+          <a href="{{url_for('root.root')}}">Back</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+    <script
+      type="module"
+      src="{{url_for('static', filename='js/index.js')}}"
+    ></script>
   </body>
 </html>
