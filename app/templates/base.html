@@ -13,17 +13,20 @@
   <body>
     <div id="root">
       <h1>Welcome to the calculator app!</h1>
-      <ul>
-        {% if root %}
-        <li>
-          <a href="{{url_for('app.home')}}">App</a>
-        </li>
-        {% else %}
-        <li>
-          <a href="{{url_for('root.root')}}">Back</a>
-        </li>
-        {% endif %}
-      </ul>
+      <nav id="navbar">
+        <ul>
+          {% if root %}
+          <li>
+            <a href="{{url_for('app.home')}}">App</a>
+          </li>
+          {% else %}
+          <li>
+            <a href="{{url_for('root.root')}}">Back</a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+      {%block content%}{%endblock%}
     </div>
     <script
       type="module"

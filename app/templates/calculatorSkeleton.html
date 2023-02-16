@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block content %}
+<div id="calculator_main_container">
+  <form action="" method="post">
+    <div id="display_container">
+      <input type="text" value="" id="display_container_input" />
+    </div>
+    <div id="button_container">
+      <ul id="button_container_ul">
+        {% for r in nameMapping %} {% for c in r %}
+        <li>
+          <button type="button" value="{{c}}">{{c}}</button>
+        </li>
+        {% endfor %} {% endfor %}
+      </ul>
+    </div>
+  </form>
+</div>
+{% endblock %}
