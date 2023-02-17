@@ -1,4 +1,68 @@
+* {
+  font-family: "Mukta", sans-serif;
+  margin: auto;
+}
+
 h1 {
-  font-size: xx-large;
-  font-weight: 700;
+  font-family: "Mukta", sans-serif;
+  font-size: 75px;
+  color: chocolate;
+}
+
+#welcoming_msg {
+  height: 100px;
+  text-align: center;
+}
+
+:root {
+  --light-primary: #fefcf3;
+  --normal-primary: #f5ebe0;
+  --dark-primary: #f0dbdb;
+  --darker-primary: #dba39a;
+}
+
+html,
+body {
+  height: 100%;
+  /* background-color: var(--darker-primary); */
+}
+
+#root {
+  border: 1px solid var(--darker-primary);
+  border-radius: 1%;
+  width: 70%;
+  height: 100%;
+  margin: auto;
+  background: linear-gradient(
+    to top,
+    var(--darker-primary),
+    var(--light-primary)
+  );
+}
+
+#navbar {
+  display: flex;
+  justify-content: center;
+  /* border-top: 1px solid darkgreen; */
+  /* border-bottom: 1px solid darkgreen; */
+  height: 50px;
+  align-items: center;
+  padding-bottom: 15px;
+}
+
+.nav_button {
+  height: 45px;
+  width: 100px;
+  font-size: 25px;
+  border-radius: 10%;
+  border-color: var(--darker-primary);
+  background-color: var(--darker-primary);
+  /* border-radius: 1px; */
+  color: white;
+}
+
+#meme_container {
+  width: 70%;
+  height: 50%;
+  margin: 50px auto;
 }
