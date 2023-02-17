@@ -1,9 +1,4 @@
-// const { assembleStructure } = require("./structure");
-
 window.onload = () => {
-  // assemble the structure of the page
-  // assembleStructure();
-
   // add the required event listeners
   let valueArray = [];
 
@@ -39,8 +34,30 @@ window.onload = () => {
     .getElementById("button_container_ul")
     .addEventListener("click", (event) => {
       const displayElement = document.getElementById("display_container_input");
-      updateValueArray(event.target.value);
-      displayElement.value = valueArray.join(" ");
+      if (event.target.value === "=") {
+        const displayValue = "Calculating...";
+        // send a request to server to evaluate the expression
+        const body = JSON.stringify({ payload: valueArray });
+        const method = "POST";
+        const headers = {
+          "Content-Type": "application/json",
+        };
+        const options = {
+          method,
+          headers,
+          body,
+        };
+        fetch("/app", options)
+          .then((res) => res.json())
+          .then((value) => (displayElement.value = value.value))
+          .catch((e) => console.error(e));
+
+        valueArray = [];
+        displayElement.value = displayValue;
+      } else {
+        updateValueArray(event.target.value);
+        displayElement.value = valueArray.join(" ");
+      }
       event.stopPropagation();
     });
 };

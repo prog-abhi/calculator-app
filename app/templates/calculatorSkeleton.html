@@ -1,8 +1,15 @@
 {% extends 'base.html' %} {% block content %}
 <div id="calculator_main_container">
-  <form action="" method="post">
+  <form action="{{url_for('.home')}}" method="post">
     <div id="display_container">
-      <input type="text" value="" id="display_container_input" />
+      <label for="display_container_input">
+        <input
+          name="expression"
+          type="text"
+          value=""
+          id="display_container_input"
+        />
+      </label>
     </div>
     <div id="button_container">
       <ul id="button_container_ul">
