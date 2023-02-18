@@ -13,7 +13,7 @@ def mapToFunc(arr):
 
     return ans
 
-def validate(arr, operators):
+def validate(arr, operators, constants):
     # validate brackets
     def validate_brackets(arr):
         stack = []
@@ -31,9 +31,9 @@ def validate(arr, operators):
             return True
 
     # validate or other words
-    def validate_for_other_words(arr, operators):
+    def validate_for_other_words(arr, operators, constants):
         for char in arr:
-            if char not in operators and mapToFunc(char) not in operators and not char.isnumeric():
+            if char not in operators and mapToFunc(char) not in operators and not char.isnumeric() and char not in constants and char not in ("(", ")"):
                 return False
         return True
 
@@ -47,7 +47,7 @@ def validate(arr, operators):
         return True
 
 
-    return validate_brackets(arr) and validate_for_other_words(arr, operators) and validate_operator_syntax(arr, operators)
+    return validate_brackets(arr) and validate_for_other_words(arr, operators, constants) and validate_operator_syntax(arr, operators)
 
 # arr = ['12', '/', '1']
 # arr2 = ['12', 'mod', '55']

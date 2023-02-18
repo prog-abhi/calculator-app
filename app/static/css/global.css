@@ -5,8 +5,8 @@
 
 h1 {
   font-family: "Mukta", sans-serif;
-  font-size: 75px;
-  color: chocolate;
+  font-size: 50px;
+  /* color: chocolate; */
 }
 
 #welcoming_msg {
@@ -28,21 +28,17 @@ body {
 }
 
 #root {
-  border: 1px solid var(--darker-primary);
+  /* border: 1px solid var(--darker-primary); */
   border-radius: 1%;
   width: 70%;
   height: 100%;
   margin: auto;
-  background: linear-gradient(
-    to top,
-    var(--darker-primary),
-    var(--light-primary)
-  );
+  background: linear-gradient(to top, lightgray, whitesmoke);
 }
 
 #navbar {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   /* border-top: 1px solid darkgreen; */
   /* border-bottom: 1px solid darkgreen; */
   height: 50px;
@@ -56,9 +52,15 @@ body {
   font-size: 25px;
   border-radius: 10%;
   border-color: var(--darker-primary);
-  background-color: var(--darker-primary);
+  background-color: red;
   /* border-radius: 1px; */
   color: white;
+}
+
+#masthead {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 15px;
 }
 
 #meme_container {

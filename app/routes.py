@@ -1,4 +1,6 @@
 from flask import Blueprint, render_template, request
+import json
+from requests import post
 from .data import nameMapping
 from .helper import mapToFunc, validate
 
@@ -27,16 +29,35 @@ def home():
             "/",
             "*",
             "-",
-            "**",
             "^",
+            "%",
         ]
+
+        constants = ["pi"]
+
+        print(infix_array_updated)
+
 
         # validate the expression
         value = None
-        if validate(infix_array_updated, oprs):
+        if validate(infix_array_updated, oprs, constants):
             try:
-                print(infix_array_updated)
-                value = eval(''.join(infix_array_updated))
+
+                url = "http://api.mathjs.org/v4/"
+                headers = {
+                    "content-type": "application/json"
+                }
+                payload = {
+                    "expr": ''.join(infix_array_updated)
+                }
+
+                response = post(
+                    url,
+                    headers=headers,
+                    data=json.dumps(payload)
+                )
+
+                value = response.json()['result']
             except:
                 value = "Wrong expression"
             # if validation successfull evaluate the expression

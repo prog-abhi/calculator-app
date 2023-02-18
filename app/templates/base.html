@@ -12,28 +12,30 @@
   </head>
   <body>
     <div id="root">
-      {% if root %}
-      <div id="welcoming_msg">
-        <h1>Welcome to the calculator app!</h1>
+      <div id="masthead">
+        {% if root %}
+        <div id="welcoming_msg">
+          <h1>Welcome to the calculator app!</h1>
+        </div>
+        {% endif %}
+        <nav id="navbar">
+          <ul>
+            {% if root %}
+            <li>
+              <a href="{{url_for('app.home')}}"
+                ><button class="nav_button" type="button">App</button></a
+              >
+            </li>
+            {% else %}
+            <li>
+              <a href="{{url_for('root.root')}}"
+                ><button class="nav_button" type="button">Back</button></a
+              >
+            </li>
+            {% endif %}
+          </ul>
+        </nav>
       </div>
-      {% endif %}
-      <nav id="navbar">
-        <ul>
-          {% if root %}
-          <li>
-            <a href="{{url_for('app.home')}}"
-              ><button class="nav_button" type="button">App</button></a
-            >
-          </li>
-          {% else %}
-          <li>
-            <a href="{{url_for('root.root')}}"
-              ><button class="nav_button" type="button">Back</button></a
-            >
-          </li>
-          {% endif %}
-        </ul>
-      </nav>
       {% if root %}
       <div id="meme_container">
         <div
