@@ -10,7 +10,7 @@ h1 {
 }
 
 #welcoming_msg {
-  height: 100px;
+  height: fit-content;
   text-align: center;
 }
 
@@ -33,7 +33,7 @@ body {
   width: 70%;
   height: 100%;
   margin: auto;
-  background: linear-gradient(to top, lightgray, whitesmoke);
+  /* background: linear-gradient(to top, lightgray, whitesmoke); */
 }
 
 #navbar {
@@ -48,19 +48,56 @@ body {
 
 .nav_button {
   height: 45px;
-  width: 100px;
+  width: 120px;
   font-size: 25px;
-  border-radius: 10%;
-  border-color: var(--darker-primary);
-  background-color: red;
-  /* border-radius: 1px; */
+  border-radius: 50px;
+  /* border-color: var(--darker-primary); */
+  background-color: #4caf50;
+  border: 2px solid #4caf50;
   color: white;
+  text-decoration: none;
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+
+.nav_button span {
+  display: inline-block;
+  position: relative;
+  transition-duration: 0.3s;
+}
+
+.nav_button span::after {
+  content: "\00bb";
+  font-size: 25px;
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -10px;
+  transition-duration: 0.3s;
+}
+
+.nav_button:hover {
+  /* background-color: white;
+  color: #4caf50; */
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.nav_button:hover span {
+  padding-right: 15px;
+}
+
+.nav_button:hover span::after {
+  opacity: 1;
+  right: 0;
 }
 
 #masthead {
   display: flex;
   justify-content: space-between;
   padding: 5px 15px;
+  background-color: white;
+  border-bottom: 1px solid #4caf50;
 }
 
 #meme_container {

@@ -13,23 +13,29 @@
   <body>
     <div id="root">
       <div id="masthead">
-        {% if root %}
         <div id="welcoming_msg">
+          {% if root %}
           <h1>Welcome to the calculator app!</h1>
+          {% else %}
+          <h1>Happy playing!</h1>
+          {% endif %}
         </div>
-        {% endif %}
         <nav id="navbar">
           <ul>
             {% if root %}
             <li>
               <a href="{{url_for('app.home')}}"
-                ><button class="nav_button" type="button">App</button></a
+                ><button class="nav_button" type="button">
+                  <span>App </span>
+                </button></a
               >
             </li>
             {% else %}
             <li>
               <a href="{{url_for('root.root')}}"
-                ><button class="nav_button" type="button">Back</button></a
+                ><button class="nav_button" type="button">
+                  <span>Back </span>
+                </button></a
               >
             </li>
             {% endif %}
