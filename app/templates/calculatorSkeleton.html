@@ -1,15 +1,16 @@
 {% extends 'base.html' %} {% block content %}
 <div id="calculator_main_container">
-  <form action="{{url_for('.home')}}" method="post">
+  <section id="calculator_main_section">
     <div id="display_container">
-      <label for="display_container_input">
+      <!-- <label for="display_container_input">
         <input
           name="expression"
           type="text"
           value=""
           id="display_container_input"
         />
-      </label>
+      </label> -->
+      <div id="display_container_input"></div>
     </div>
     <div id="button_container">
       <ul id="button_container_ul">
@@ -20,6 +21,6 @@
         {% endfor %} {% endfor %}
       </ul>
     </div>
-  </form>
+  </section>
 </div>
 {% endblock %}

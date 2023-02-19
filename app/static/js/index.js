@@ -49,14 +49,16 @@ window.onload = () => {
         };
         fetch("/app", options)
           .then((res) => res.json())
-          .then((value) => (displayElement.value = value.value))
+          .then(
+            (value) => (displayElement.innerHTML = `<h2>${value.value}</h2>`)
+          )
           .catch((e) => console.error(e));
 
         valueArray = [];
-        displayElement.value = displayValue;
+        displayElement.innerHTML = `<h2>${displayValue}</h2>`;
       } else {
         updateValueArray(event.target.value);
-        displayElement.value = valueArray.join(" ");
+        displayElement.innerHTML = `<h2>${valueArray.join(" ")}</h2>`;
       }
       event.stopPropagation();
     });
