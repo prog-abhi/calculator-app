@@ -51,9 +51,10 @@ window.onload = () => {
         };
         fetch("/app", options)
           .then((res) => res.json())
-          .then(
-            (value) => (displayElement.innerHTML = `<h2>${value.value}</h2>`)
-          )
+          .then((value) => {
+            valueArray = [`${value.value}`];
+            displayElement.innerHTML = `<h2>${valueArray.join(" ")}</h2>`;
+          })
           .catch((e) => console.error(e));
 
         valueArray = [];

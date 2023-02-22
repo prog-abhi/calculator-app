@@ -1,5 +1,13 @@
 from .data import charToFuncMap
 
+def is_float(char):
+        try:
+            float(char)
+            return True
+        except ValueError:
+            return False
+
+
 def mapToFunc(arr, constants):
     def cb(char):
         if char not in charToFuncMap.keys():
@@ -61,17 +69,11 @@ def validate(arr, operators, constants):
         else:
             return True
 
-    def is_float(char):
-        try:
-            float(char)
-            return True
-        except ValueError:
-            return False
 
     # validate or other words
     def validate_for_other_words(arr, operators, constants):
         for char in arr:
-            if char not in operators and mapToFunc(char) not in operators and not is_float(char) and char not in constants and char not in ("(", ")"):
+            if char not in operators and mapToFunc(char, constants) not in operators and not is_float(char) and char not in constants and char not in ("(", ")"):
                 return False
         return True
 
@@ -80,9 +82,15 @@ def validate(arr, operators, constants):
     def validate_operator_syntax(arr, operators):
         for idx, char in enumerate(arr):
             if char in operators:
-                if idx == 0 or idx == len(arr) - 1 or (not (arr[idx-1].isnumeric() or arr[idx-1] in ("(", ")")) and (arr[idx+1].isnumeric() or arr[idx+1] in ("(", ")"))):
+                if idx == 0 or idx == len(arr) - 1 or (not (is_float(arr[idx-1]) or arr[idx-1] in ("(", ")")) and (is_float(arr[idx+1]) or arr[idx+1] in ("(", ")"))):
                     return False
         return True
+
+    print(
+        validate_brackets(arr),
+        validate_for_other_words(arr, operators, constants),
+        validate_operator_syntax(arr, operators)
+    )
 
     return validate_brackets(arr) and validate_for_other_words(arr, operators, constants) and validate_operator_syntax(arr, operators)
 

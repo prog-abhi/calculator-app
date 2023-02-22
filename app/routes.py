@@ -17,6 +17,8 @@ def home():
     if request.method == "POST" :
         data = request.get_json()
         infix_array = data['payload']
+        print(infix_array)
+
         # operators
         oprs = [
             "+",
@@ -31,6 +33,7 @@ def home():
 
         # map to func names
         infix_array_updated = mapToFunc(infix_array, constants)
+        print(infix_array_updated)
 
 
         # validate the expression
