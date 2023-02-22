@@ -14,11 +14,25 @@
     </div>
     <div id="button_container">
       <ul id="button_container_ul">
-        {% for r in nameMapping %} {% for c in r %}
-        <li>
-          <button type="button" value="{{c}}">{{c}}</button>
-        </li>
-        {% endfor %} {% endfor %}
+        {% for r in nameMapping %} {% for c in r %} {%if c == "="%}
+        <div id="equal_button_container">
+          <button type="button" value="{{c}}" class="calculator_button">
+            {{c}}
+          </button>
+        </div>
+        {%elif c == "←"%}
+        <div id="backspace_button_container">
+          <button type="button" value="{{c}}" class="calculator_button">
+            {{c}}
+          </button>
+        </div>
+        {%else%}
+        <div>
+          <button type="button" value="{{c}}" class="calculator_button">
+            {{c}}
+          </button>
+        </div>
+        {%endif%} {% endfor %} {% endfor %}
       </ul>
     </div>
   </section>
