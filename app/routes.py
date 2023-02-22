@@ -17,12 +17,6 @@ def home():
     if request.method == "POST" :
         data = request.get_json()
         infix_array = data['payload']
-
-        print(infix_array)
-
-        # map to func names
-        infix_array_updated = mapToFunc(infix_array)
-
         # operators
         oprs = [
             "+",
@@ -35,7 +29,8 @@ def home():
 
         constants = ["pi"]
 
-        print(infix_array_updated)
+        # map to func names
+        infix_array_updated = mapToFunc(infix_array, constants)
 
 
         # validate the expression

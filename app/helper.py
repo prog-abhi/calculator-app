@@ -1,6 +1,6 @@
 from .data import charToFuncMap
 
-def mapToFunc(arr):
+def mapToFunc(arr, constants):
     def cb(char):
         if char not in charToFuncMap.keys():
             return [char]
@@ -13,7 +13,7 @@ def mapToFunc(arr):
         while idx < len(arr):
             if arr[idx] == "√":
                 if idx < len(arr) - 1:
-                    if arr[idx + 1][0].isnumeric():
+                    if arr[idx + 1][0].isnumeric() or arr[idx+1] in constants:
                         mapped_arr.append(arr[idx+1])
                         mapped_arr.append("^")
                         mapped_arr.append("0.5")
@@ -83,12 +83,6 @@ def validate(arr, operators, constants):
                 if idx == 0 or idx == len(arr) - 1 or (not (arr[idx-1].isnumeric() or arr[idx-1] in ("(", ")")) and (arr[idx+1].isnumeric() or arr[idx+1] in ("(", ")"))):
                     return False
         return True
-
-    print(
-        validate_brackets(arr),
-        validate_for_other_words(arr, operators, constants),
-        validate_operator_syntax(arr, operators)
-    )
 
     return validate_brackets(arr) and validate_for_other_words(arr, operators, constants) and validate_operator_syntax(arr, operators)
 
