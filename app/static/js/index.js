@@ -21,7 +21,9 @@ window.onload = () => {
           );
         }
       } else {
-        valueArray.push(value);
+        if (value === "x²") {
+          valueArray.push("^", "2");
+        } else valueArray.push(value);
       }
     } else if (value === "←") {
       console.log(valueArray.pop());

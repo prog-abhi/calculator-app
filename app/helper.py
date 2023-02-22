@@ -7,9 +7,40 @@ def mapToFunc(arr):
         else:
             return [*charToFuncMap[char]]
 
+    def sqr_root_handler(arr):
+        idx = 0
+        mapped_arr = []
+        while idx < len(arr):
+            if arr[idx] == "√":
+                if idx < len(arr) - 1:
+                    if arr[idx + 1][0].isnumeric():
+                        mapped_arr.append(arr[idx+1])
+                        mapped_arr.append("^")
+                        mapped_arr.append("0.5")
+                        idx += 2
+                    elif arr[idx + 1] == "(":
+                        j = idx + 1
+                        while j < len(arr) and arr[j] != ")":
+                            mapped_arr.append(arr[j])
+                            j += 1
+                        if arr[j] == ")":
+                            mapped_arr.append(arr[j])
+                        mapped_arr.append("^")
+                        mapped_arr.append("0.5")
+                        idx = j + 1
+                    else:
+                        mapped_arr.append("^")
+                        mapped_arr.append("0.5")
+
+            else: mapped_arr.append(arr[idx])
+            idx+=1
+        return mapped_arr
+
     ans = []
     for char in arr:
         ans = ans + cb(char)
+
+    ans = sqr_root_handler(ans)
 
     return ans
 
@@ -30,10 +61,17 @@ def validate(arr, operators, constants):
         else:
             return True
 
+    def is_float(char):
+        try:
+            float(char)
+            return True
+        except ValueError:
+            return False
+
     # validate or other words
     def validate_for_other_words(arr, operators, constants):
         for char in arr:
-            if char not in operators and mapToFunc(char) not in operators and not char.isnumeric() and char not in constants and char not in ("(", ")"):
+            if char not in operators and mapToFunc(char) not in operators and not is_float(char) and char not in constants and char not in ("(", ")"):
                 return False
         return True
 
@@ -46,6 +84,11 @@ def validate(arr, operators, constants):
                     return False
         return True
 
+    print(
+        validate_brackets(arr),
+        validate_for_other_words(arr, operators, constants),
+        validate_operator_syntax(arr, operators)
+    )
 
     return validate_brackets(arr) and validate_for_other_words(arr, operators, constants) and validate_operator_syntax(arr, operators)
 

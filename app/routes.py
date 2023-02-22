@@ -66,6 +66,7 @@ def home():
             # else return load error page
         else:
             value = "Wrong expression"
+
         return {
             "value": value
         }
