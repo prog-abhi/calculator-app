@@ -93,20 +93,3 @@ def validate(arr, operators, constants):
     )
 
     return validate_brackets(arr) and validate_for_other_words(arr, operators, constants) and validate_operator_syntax(arr, operators)
-
-# arr = ['12', '/', '1']
-# arr2 = ['12', 'mod', '55']
-# arr3 = ['12', 'square(x)', '5']
-# print(mapToFunc(arr))
-# print(mapToFunc(arr2))
-# print(mapToFunc(arr3))
-# arr = ["6", "+", "2", "^", "2"]
-#  oprs = [
-#             "+",
-#             "/",
-#             "*",
-#             "-",
-#             "**",
-#             "^",
-#         ]
-# print(validate(arr, oprs))
