@@ -96,3 +96,20 @@ button.calculator_button:hover {
 #backspace_button_container button {
   background-color: red;
 }
+
+@media screen and (max-width: 700px) {
+  button.calculator_button {
+    border-radius: 5px;
+    font-size: 15px;
+    width: 3em;
+    height: 3em;
+  }
+
+  #button_container_ul {
+    gap: 2px;
+  }
+
+  #equal_button_container button {
+    height: 6em;
+  }
+}

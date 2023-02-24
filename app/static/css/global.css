@@ -9,7 +9,7 @@ h2 {
 }
 
 h1 {
-  font-size: 50px;
+  font-size: 40px;
 }
 
 h2 {
@@ -112,4 +112,48 @@ body {
   width: 70%;
   height: 50%;
   margin: 50px auto;
+}
+
+@media screen and (max-width: 700px) {
+  #welcoming_msg h1 {
+    font-size: 40px;
+  }
+
+  #navbar {
+    height: 45px;
+  }
+
+  .nav_button {
+    height: 40px;
+    width: 100px;
+    font-size: 20px;
+    border-radius: 35px;
+  }
+
+  .nav_button span::after {
+    font-size: 20px;
+    right: -8px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  #welcoming_msg h1 {
+    font-size: 30px;
+  }
+
+  #navbar {
+    height: 35px;
+  }
+
+  .nav_button {
+    height: 30px;
+    width: 80px;
+    font-size: 15px;
+    border-radius: 25px;
+  }
+
+  .nav_button span::after {
+    font-size: 15px;
+    right: -5px;
+  }
 }
